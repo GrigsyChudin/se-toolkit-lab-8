@@ -92,14 +92,6 @@ def create_server() -> Server:
 
 def main() -> None:
     """Run the observability MCP server."""
-    from mcp_obs.observability import VICTORIALOGS_URL, VICTORIATRACES_URL
-    import os
-
-    # Override URLs from environment if provided
-    global VICTORIALOGS_URL, VICTORIATRACES_URL
-    VICTORIALOGS_URL = os.environ.get("NANOBOT_VICTORIALOGS_URL", VICTORIALOGS_URL)
-    VICTORIATRACES_URL = os.environ.get("NANOBOT_VICTORIATRACES_URL", VICTORIATRACES_URL)
-
     async def run() -> None:
         server = create_server()
         async with stdio_server() as (read_stream, write_stream):
