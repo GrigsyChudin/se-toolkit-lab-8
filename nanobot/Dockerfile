@@ -45,6 +45,7 @@ COPY --from=workspace nanobot-websocket-channel/mcp-webchat/src \
 COPY . /app/nanobot
 
 # Register editable installs (workspace packages)
+# First install mcp-obs explicitly since nanobot depends on it
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --package nanobot
 # First install mcp-obs explicitly since nanobot depends on it
